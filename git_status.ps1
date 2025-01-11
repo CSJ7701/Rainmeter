@@ -51,7 +51,7 @@ foreach ($Repo in $Repos.keys) {
         $UnpulledCommits = Run-GitCommand -Path $Path -IsWSL $IsWSL -Command "log ..@{u}"
 
         # Format the output
-        Add-Content -Path $OutputFile -Value "$Repo:`n"
+        Add-Content -Path $OutputFile -Value "$Repo :`n"
         Add-Content -Path $OutputFile -Value "  Local Changes: $($LocalChanges.Count)`n"
         Add-Content -Path $OutputFile -Value "  Unpushed Commits: $($UnpushedCommits.Count)`n"
         Add-Content -Path $OutputFile -Value "  Unpulled Commits: $($UnpulledCommits.Count)`n`n"
