@@ -46,8 +46,11 @@ if __name__ == "__main__":
 
         if is_wsl or os.path.exists(path):
             local_changes = run_git_command(path, is_wsl, "status --porcelain")
+            print(local_changes)
             unpushed_commits = run_git_command(path, is_wsl, "log @{u}..")
+            print(unpushed_commits)
             unpulled_commits = run_git_command(path, is_wsl, "log ..@{u}")
+            print(unpulled_commits)
 
             output += f"{repo}:\n"
             output += f"  Local Changes: {len(local_changes.splitlines())}\n" if local_changes else "  Local Changes: 0\n"
