@@ -46,13 +46,13 @@ if __name__ == "__main__":
 
         if is_wsl or os.path.exists(path):
             local_changes = run_git_command(path, is_wsl, "status --porcelain")
-            unpushed_commits = run_git_command(path, is_wsl, "log @{u}..")
-            unpulled_commits = run_git_command(path, is_wsl, "log ..@{u}")
+            unpushed_commits = run_git_command(path, is_wsl, "rev-list --count HEAD..@{u}")
+            unpulled_commits = run_git_command(path, is_wsl, "rev-list --count @{u}..HEAD")
 
             output += f"{repo}:\n"
             output += f"  Local Changes: {len(local_changes.splitlines())}\n" if local_changes else "  Local Changes: 0\n"
-            output += f"  Unpushed Commits: {len(unpushed_commits.splitlines())}\n" if unpushed_commits else "  Unpushed Commits: 0\n"
-            output += f"  Unpulled Commits: {len(unpulled_commits.splitlines())}\n" if unpulled_commits else "  Unpulled Commits: 0\n\n"
+            output += f"  Unpushed Commits: {unpushed_commits}\n" if unpushed_commits else "  Unpushed Commits: 0\n"
+            output += f"  Unpulled Commits: {unpulled_commits}\n" if unpulled_commits else "  Unpulled Commits: 0\n\n"
         else:
             output += f"{repo}: Invalid Path\n\n"
 
