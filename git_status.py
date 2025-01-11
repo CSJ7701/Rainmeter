@@ -29,7 +29,7 @@ def run_git_command(path, is_wsl, command):
 def write_output(file_path, data):
     with open(file_path, "w") as f:
         f.write(data)
- 
+  
 # Main Logic
 if __name__ == "__main__":
     if not os.path.exists(config_file):
