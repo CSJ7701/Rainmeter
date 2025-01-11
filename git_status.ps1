@@ -56,6 +56,6 @@ foreach ($Repo in $Repos.keys) {
         Add-Content -Path $OutputFile -Value "  Unpushed Commits: $($UnpushedCommits.Count)`n"
         Add-Content -Path $OutputFile -Value "  Unpulled Commits: $($UnpulledCommits.Count)`n`n"
     } else {
-        Add-Content -Path $OutputFile -Value "$Repo: Invalid Path`n`n"
+        Add-Content -Path $OutputFile -Value "$Repo : Invalid Path`n`n"
     }
 }
