@@ -45,7 +45,7 @@ foreach ($Repo in $Repos.keys) {
     $Remote = $Repos[$Repo]["Remote"]
     $IsWSL = $Repos[$Repo]["WSL"] -eq "true"
 
-    if ($IsWSL -or Test-Path $Path) {
+    if ($IsWSL -or (Test-Path $Path)) {
 	$LocalChanges = Run-GitCommand -Path $Path -IsWSL $IsWSL -Command "status --porcelain"
         $UnpushedCommits = Run-GitCommand -Path $Path -IsWSL $IsWSL -Command "log @{u}.."
         $UnpulledCommits = Run-GitCommand -Path $Path -IsWSL $IsWSL -Command "log ..@{u}"
