@@ -86,7 +86,9 @@ if __name__ == "__main__":
         if os.path.exists(repo_path):
             print(get_git_status(repo_path, return_type))
         else:
-            print("Invalid path. Please check and try again.")
+            # Invalid path. Seems to activate occassionally.
+            # Can't figure out why, so displays a placeholder for now.
+            print("?W")
     else:
         path_wo_prefix = repo_path[len(prefix):] # Removes prefix, and trailing \
         unix_path = path_wo_prefix.replace("\\","/")
@@ -94,5 +96,7 @@ if __name__ == "__main__":
         if result.returncode == 0: # If directory exists in WSL
             print(wsl_git_status(unix_path, return_type))
         else:
-            print("Invalid path. Please check and try again.")
+            # Invalid path. Seems to activate occassionally.
+            # Can't figure out why, so displays a placeholder for now.
+            print("?L")
             
